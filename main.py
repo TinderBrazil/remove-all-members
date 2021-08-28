@@ -18,16 +18,16 @@ token = os.environ.get('BOT_TOKEN')
 app = Client("remove", app_id, app_key, bot_token=token)
 
 
-STARTED = 'start removing users...'
-FINISH = 'done, {} users were removed from group'
-ERROR = 'something failed!'
-ADMIN_NEEDED = "i need to be admin!"
-PRIVATE = '''Hi, I'm a robot to help you remove all users from your group.
+STARTED = 'começar a remover usuários...'
+FINISH = 'feito, {} usuários foram removidos do grupo'
+ERROR = 'algo falhou!'
+ADMIN_NEEDED = "eu preciso ser administrador!"
+PRIVATE = '''Olá, sou um robô para ajudá-lo a remover todos os usuários do seu grupo.
 
-Now add me to a group and don't forget to give me the permissions.
-Then send /kick in the group and I will start my work.'''
+Agora me adicione a um grupo e não se esqueça de me dar as permissões.
+Então manda /remover no grupo e vou começar meu trabalho.'''
 
-@app.on_message(filters.group & filters.command("kick"))
+@app.on_message(filters.group & filters.command("remover"))
 def main(_, msg: Message):
     chat = msg.chat
     me = chat.get_member(app.get_me().id)
@@ -54,7 +54,7 @@ def service(c, m):
 @app.on_message(filters.private)
 def start(_, msg: Message):
     msg.reply(PRIVATE, reply_markup=InlineKeyboardMarkup([[
-        InlineKeyboardButton("Source Code", url="https://www.github.com/samadii/remove-all-members")]]))
+        InlineKeyboardButton("Criador 🎧", url="https://t.me/TiuMorty")]]))
 
 
 app.run()
